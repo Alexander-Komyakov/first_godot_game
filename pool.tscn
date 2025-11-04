@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca27digfwqrcd"]
+
+[ext_resource type="Script" uid="uid://bqu0cqkocgebg" path="res://pools.gd" id="1_q638n"]
+[ext_resource type="Texture2D" uid="uid://crsfmtc35pmr0" path="res://images/FishSample/prud.png" id="1_w78qj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w78qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w78qj")
+}],
+"loop": true,
+"name": &"pool",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03hax"]
+size = Vector2(251, 231)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q638n"]
+radius = 235.0
+
+[node name="pool" type="StaticBody2D"]
+script = ExtResource("1_q638n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w78qj")
+animation = &"pool"
+autoplay = "pool"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 9.5)
+shape = SubResource("RectangleShape2D_03hax")
+
+[node name="detector" type="Area2D" parent="."]
+
+[node name="s" type="CollisionShape2D" parent="detector"]
+shape = SubResource("CircleShape2D_q638n")
+
+[connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
