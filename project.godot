@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 PlayerMove="*res://player_move.gd"
 
+[display]
+
+window/size/viewport_width=1366
+window/size/viewport_height=768
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/vim-plugin/plugin.cfg")

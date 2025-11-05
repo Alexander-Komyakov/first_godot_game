@@ -2,6 +2,13 @@ extends StaticBody2D
 
 var is_entered: bool = false
 signal start_minigame(difficulty: String)
+var difficulty: String
+
+var difficulty_values = {
+    "easy": 1,
+    "medium": 2,
+    "hard": 3
+}
 
 func _ready():
     $detector.body_entered.connect(_on_player_entered)
@@ -23,9 +30,15 @@ func _input(event):
         var random_time = randf_range(2.0, 5.0)
         var timer = get_tree().create_timer(random_time)
         await timer.timeout
-        if player.current_state == player.player_state.FISHING:
-            fish_on("easy")
+        if player.current_state == player.player_state.FISHING and get_node("../fishing").fish_on == false:
+            var random_value = randf() * 100  # 0-100
+            if random_value < 70:    # 0-69.999 (70%)
+                difficulty = "easy"
+            elif random_value < 95:  # 70-94.999 (25%)
+                difficulty = "medium"
+            else:                    # 95-100 (5%)
+                difficulty = "hard"
+            fish_on(difficulty)
 
 func fish_on(difficulty: String):
     start_minigame.emit(difficulty)
-    

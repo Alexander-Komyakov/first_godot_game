@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://glhl6xhpy37x"]
+[gd_scene load_steps=5 format=3 uid="uid://glhl6xhpy37x"]
 
 [ext_resource type="PackedScene" uid="uid://x7ixskn1mbjl" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ca27digfwqrcd" path="res://pool.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b4k4f4hc7t7e1" path="res://fishing.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://oo4vrx3jwx5j" path="res://interface.tscn" id="4_1bvp3"]
 
 [node name="main" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_0xm2m")]
-position = Vector2(239, 142)
+position = Vector2(434, 328)
 
 [node name="pool" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(881, 216)
 
 [node name="fishing" parent="." instance=ExtResource("3_h2yge")]
+
+[node name="Interface" parent="." instance=ExtResource("4_1bvp3")]

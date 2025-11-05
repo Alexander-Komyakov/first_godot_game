@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://oo4vrx3jwx5j"]
+
+[ext_resource type="Script" uid="uid://7sa3nn3jdgce" path="res://interface.gd" id="1_rh14k"]
+
+[node name="Interface" type="CanvasLayer"]
+script = ExtResource("1_rh14k")
+
+[node name="ProgressFish" type="ProgressBar" parent="."]
+offset_left = 33.0
+offset_top = 718.0
+offset_right = 1328.0
+offset_bottom = 746.0
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="ProgressFishLabel" type="Label" parent="."]
+offset_left = 636.0
+offset_top = 721.0
+offset_right = 676.0
+offset_bottom = 744.0
+text = "0/10"

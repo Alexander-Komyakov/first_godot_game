@@ -3,6 +3,9 @@ extends CharacterBody2D
 @export var speed: float = 400
 signal stop_minigame()
 
+var progress_bar: ProgressBar
+
+
 enum player_state {
     IDLE = 0, FISHING = 1, RESULT = 2
 }
