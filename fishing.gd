@@ -9,6 +9,7 @@ var tween: Tween
 var moving_indicator = ColorRect.new()
 var target_zone = ColorRect.new()
 var fishing_bar = ColorRect.new()
+var border = ColorRect.new()
  
 func stop_loop():
     if tween:
@@ -32,6 +33,13 @@ func _ready():
     # Создаем целевую зону (красный)
     moving_indicator.color = Color.RED
     add_child(moving_indicator)
+    
+    border = ColorRect.new()
+    border.color = Color.BLACK
+
+    add_child(border)
+# Чтобы бордюр был СНИЗУ (под полосой), а не поверх — переместим его в начало списка детей:
+    move_child(border, 0)
 
 
 func check_hit():
@@ -59,24 +67,29 @@ func _process(delta):
             
 
 func show_result(success: bool):
-    get_node("../player").current_state = PlayerMove.player_state.RESULT
+    get_node("../player").set_state(PlayerMove.player_state.RESULT)
     var result_text = Label.new()
-    result_text.position = Vector2(50, 200)
+    result_text.set("theme_override_font_sizes/font_size", 50)
+    var screen_size = get_viewport().get_visible_rect().size
+    result_text.position = Vector2((screen_size.x / 2) - 300, (screen_size.y / 2)-50)
     
     if success:
+        get_node("../player").audioWin.play()
         result_text.text = "УСПЕХ!"
         result_text.add_theme_color_override("font_color", Color.GREEN)
     else:
+        get_node("../player").audioLose.play()
         result_text.text = "ПРОВАЛ!"
         result_text.add_theme_color_override("font_color", Color.RED)  
     add_child(result_text)
+    get_node("../player").audioCoilMore.stop()
     # Удалить через 2 секунды
     await get_tree().create_timer(2.0).timeout
     result_text.queue_free()
     #fishing_result.emit(success)  # Отправляем результат
-    get_node("../player").current_state = PlayerMove.player_state.IDLE
+    get_node("../player").set_state(PlayerMove.player_state.IDLE)
     _stop_fishing()
-    
+
 func _stop_fishing():
     stop_loop()
     fish_on = false
@@ -84,12 +97,16 @@ func _stop_fishing():
 
 func _start_fishing(difficulty: String):
     fish_on = true
+    get_node("../player").audioCoilMore.play()
+    var screen_size = get_viewport().get_visible_rect().size
+    var center_x = screen_size.x / 2
+    var center_y = screen_size.y / 2
     
     # Базовые размеры
     var bar_width = 48
     var bar_height = 300
-    var bar_pos_x = 150
-    var bar_pos_y = 35
+    var bar_pos_x = center_x - bar_width / 2  # Центрируем по X
+    var bar_pos_y = center_y - bar_height / 2  # Центрируем по Y
     
     # Настройки сложности
     var target_size = Vector2(44, 0)
@@ -120,6 +137,9 @@ func _start_fishing(difficulty: String):
     
     moving_indicator.size = Vector2(44, 30)
     moving_indicator.position = Vector2(bar_pos_x + 2, bar_height + bar_pos_y - moving_indicator.size.y)
+    
+    border.size = fishing_bar.size + Vector2(8, 8)  # +4 пикселя с каждой стороны
+    border.position = fishing_bar.position - Vector2(4, 4)  # сдвигаем на 4 пикселя влево/вверх
     
     # Запускаем анимацию
     stop_loop()

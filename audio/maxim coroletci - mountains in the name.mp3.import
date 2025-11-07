@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yylj35s7ebg0"
+path="res://.godot/imported/maxim coroletci - mountains in the name.mp3-39c68caa15bb30e1ce5a911e3bd1e8eb.mp3str"
+
+[deps]
+
+source_file="res://audio/maxim coroletci - mountains in the name.mp3"
+dest_files=["res://.godot/imported/maxim coroletci - mountains in the name.mp3-39c68caa15bb30e1ce5a911e3bd1e8eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

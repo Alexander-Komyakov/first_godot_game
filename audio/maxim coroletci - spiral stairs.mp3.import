@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d017hxfy3sko5"
+path="res://.godot/imported/maxim coroletci - spiral stairs.mp3-3f0b1939549ceb5ebf9ec5c6477fd660.mp3str"
+
+[deps]
+
+source_file="res://audio/maxim coroletci - spiral stairs.mp3"
+dest_files=["res://.godot/imported/maxim coroletci - spiral stairs.mp3-3f0b1939549ceb5ebf9ec5c6477fd660.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

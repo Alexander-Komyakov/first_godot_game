@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxipg82pc8wfw"]
+
+[ext_resource type="AudioStream" uid="uid://ckg4ejs8areha" path="res://audio/maxim coroletci - turritopsis dohrnii body.mp3" id="1_ac8y8"]
+[ext_resource type="AudioStream" uid="uid://epcu2o3l05n" path="res://audio/maxim coroletci - birds on the roof.mp3" id="1_g84o6"]
+[ext_resource type="AudioStream" uid="uid://d017hxfy3sko5" path="res://audio/maxim coroletci - spiral stairs.mp3" id="2_4uryw"]
+[ext_resource type="AudioStream" uid="uid://b1mn8scok025j" path="res://audio/maxim coroletci - naked mannequin.mp3" id="3_8mhfv"]
+[ext_resource type="AudioStream" uid="uid://yylj35s7ebg0" path="res://audio/maxim coroletci - mountains in the name.mp3" id="5_c471g"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_336cd"]
+shuffle = true
+stream_count = 5
+stream_0 = ExtResource("1_ac8y8")
+stream_1 = ExtResource("2_4uryw")
+stream_2 = ExtResource("3_8mhfv")
+stream_3 = ExtResource("1_g84o6")
+stream_4 = ExtResource("5_c471g")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamPlaylist_336cd")
+volume_db = -14.857
+autoplay = true

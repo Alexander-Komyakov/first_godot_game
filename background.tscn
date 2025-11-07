@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc1j0ejkmquug"]
+
+[ext_resource type="Texture2D" uid="uid://cj1mv4j0yx831" path="res://images/animation/background.png" id="1_i7s6n"]
+[ext_resource type="Script" uid="uid://ckulfrjfwox87" path="res://background.gd" id="2_xehqc"]
+
+[node name="background" type="Sprite2D"]
+position = Vector2(683, 384)
+texture = ExtResource("1_i7s6n")
+script = ExtResource("2_xehqc")

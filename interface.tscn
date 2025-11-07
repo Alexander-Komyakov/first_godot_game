@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7sa3nn3jdgce" path="res://interface.gd" id="1_rh14k"]
 
 [node name="Interface" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_rh14k")
 
 [node name="ProgressFish" type="ProgressBar" parent="."]

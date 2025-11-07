@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=4 uid="uid://crqptgkvjqnso"]
+
+[ext_resource type="Texture2D" uid="uid://bem5o348ud5vk" path="res://images/animation/green.png" id="1_0ugm7"]
+[ext_resource type="Script" uid="uid://c1eihql8doq1i" path="res://tile_map_layer.gd" id="2_vqaso"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqaso"]
+texture = ExtResource("1_0ugm7")
+texture_region_size = Vector2i(32, 29)
+use_texture_padding = false
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uuaxm"]
+sources/0 = SubResource("TileSetAtlasSource_vqaso")
+
+[node name="TileMapLayer" type="TileMapLayer"]
+z_index = -1
+tile_map_data = PackedByteArray("AAAQABoAAAACAAAAAAAaAA8AAAACAAAAAAApABoAAAABAAAAAAAEAA0AAAABAAAAAAAMAAQAAAABAAAAAAAPACcAAAAAAAAAABA8ACkAAAAAAAAAABBJABMAAAAAAAAAABBJAAEAAAAAAAAAABBOACwAAAAAAAAAABACACsAAAAAAAAAABA=")
+tile_set = SubResource("TileSet_uuaxm")
+script = ExtResource("2_vqaso")
