@@ -44,7 +44,7 @@ animation = &"player"
 
 [node name="AudioStep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hqtel")
-volume_db = -9.394
+volume_db = 1.101
 
 [node name="AudioBulk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_sweqy")

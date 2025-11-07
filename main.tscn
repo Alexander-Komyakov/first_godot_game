@@ -25,3 +25,4 @@ position = Vector2(881, 216)
 [node name="background" parent="." instance=ExtResource("6_7mycd")]
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("7_272bh")]
+volume_db = -10.086
