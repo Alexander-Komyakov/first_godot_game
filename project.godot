@@ -23,6 +23,7 @@ PlayerMove="*res://player_move.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

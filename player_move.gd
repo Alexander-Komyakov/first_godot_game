@@ -62,6 +62,8 @@ func _physics_process(delta):
 func set_state(state: int):
     _current_state = state
     if _current_state == player_state.IDLE:
+        if audioCoilMore != null and audioCoilMore.playing:
+            audioCoilMore.stop()
         animated_sprite.frame = 0
     elif _current_state == player_state.FISHING:
         if audioBulk != null and not audioBulk.playing:

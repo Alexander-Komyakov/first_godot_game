@@ -8,7 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    start_idle_animation()
+    pass
+    #start_idle_animation()
 
 func start_idle_animation():
     if tween_idle and tween_idle.is_running():
