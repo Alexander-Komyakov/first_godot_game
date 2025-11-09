@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://x7ixskn1mbjl"]
 
 [ext_resource type="Script" uid="uid://crfeuxdb0m8bw" path="res://player_move.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://cqgvg3i5f2fcs" path="res://images/animation/player.png" id="2_onrkg"]
-[ext_resource type="Texture2D" uid="uid://bfanjfafa6fwa" path="res://images/animation/player3.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://726thdq8l8ak" path="res://images/animation/playerNew.png" id="2_b26j0"]
+[ext_resource type="Texture2D" uid="uid://brrp178afe07h" path="res://images/animation/playerNewFisher.png" id="3_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://b5nprs0yrmh55" path="res://audio/go.mp3" id="4_hqtel"]
 [ext_resource type="AudioStream" uid="uid://cygbx6ov5lvvs" path="res://audio/bulk.mp3" id="5_sweqy"]
 [ext_resource type="AudioStream" uid="uid://dnkton4e7l2ak" path="res://audio/coil.mp3" id="6_2hs0m"]
@@ -10,18 +10,17 @@
 [ext_resource type="AudioStream" uid="uid://dod3jto0y2pqf" path="res://audio/win.mp3" id="8_b26j0"]
 [ext_resource type="AudioStream" uid="uid://d21yuq665xlew" path="res://audio/lose.mp3" id="9_n7ghd"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
-radius = 14.0
-height = 88.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_b26j0"]
+radius = 46.010868
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sweqy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_onrkg")
+"texture": ExtResource("2_b26j0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_i3pqv")
+"texture": ExtResource("3_n7ghd")
 }],
 "loop": true,
 "name": &"player",
@@ -33,13 +32,14 @@ script = ExtResource("1_hqtel")
 
 [node name="SpritePlayer" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_onrkg")
+texture = ExtResource("2_b26j0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CapsuleShape2D_hqtel")
+position = Vector2(0, -31)
+shape = SubResource("CircleShape2D_b26j0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -64)
 sprite_frames = SubResource("SpriteFrames_sweqy")
 animation = &"player"
 

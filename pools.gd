@@ -122,28 +122,20 @@ func play_buble_one() -> void:
         get_node("bubleAudio").play()
         
 func _on_left_down_visibility_changed() -> void:
-    print("aboba")
     if get_node("leftDown").visible:
-        print("GG")
         play_buble_one()
 
 
 func _on_left_up_visibility_changed() -> void:
-    print("aboba")
     if get_node("leftUp").visible:
-        print("GG")
         play_buble_one()
 
 
 func _on_right_down_visibility_changed() -> void:
-    print("aboba")
     if get_node("rightDown").visible:
-        print("GG")
         play_buble_one()
 
 
 func _on_right_up_visibility_changed() -> void:
-    print("aboba")
     if get_node("rightUp").visible:
-        print("GG")
         play_buble_one()

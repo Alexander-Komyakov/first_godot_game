@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4k4f4hc7t7e1"]
+[gd_scene load_steps=3 format=3 uid="uid://b4k4f4hc7t7e1"]
 
 [ext_resource type="Script" uid="uid://dn6lmhe278r4w" path="res://fishing.gd" id="1_xb554"]
+[ext_resource type="Texture2D" uid="uid://vjfwvx778k7f" path="res://images/animation/fishNew.png" id="2_vc7xe"]
 
 [node name="fishing" type="CanvasLayer"]
 visible = false
 script = ExtResource("1_xb554")
+
+[node name="fish" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_vc7xe")

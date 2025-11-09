@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://glhl6xhpy37x"]
+[gd_scene load_steps=9 format=3 uid="uid://glhl6xhpy37x"]
 
 [ext_resource type="PackedScene" uid="uid://x7ixskn1mbjl" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ca27digfwqrcd" path="res://pool.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b4k4f4hc7t7e1" path="res://fishing.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://oo4vrx3jwx5j" path="res://interface.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://crqptgkvjqnso" path="res://tile_map_layer.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dc1j0ejkmquug" path="res://background.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cxipg82pc8wfw" path="res://audio_stream_player.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://d3tbe2dp1e7uj" path="res://images/animation/kamish.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://iacrir7e6w62" path="res://images/animation/brow.png" id="9_4c57u"]
 
 [node name="main" type="Node2D"]
 
@@ -20,9 +21,31 @@ position = Vector2(930, 340)
 
 [node name="Interface" parent="." instance=ExtResource("4_1bvp3")]
 
-[node name="TileMapLayer" parent="." instance=ExtResource("5_lquwl")]
-
 [node name="background" parent="." instance=ExtResource("6_7mycd")]
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("7_272bh")]
 volume_db = -10.086
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="kamish" type="Sprite2D" parent="map"]
+z_index = -1
+position = Vector2(761, 488)
+texture = ExtResource("8_kek77")
+
+[node name="kamish" type="Sprite2D" parent="map/kamish"]
+position = Vector2(386, -146)
+texture = ExtResource("8_kek77")
+
+[node name="bush" type="Sprite2D" parent="map"]
+z_index = -1
+position = Vector2(121, 77)
+texture = ExtResource("9_4c57u")
+
+[node name="bush" type="Sprite2D" parent="map/bush"]
+position = Vector2(101, 575)
+texture = ExtResource("9_4c57u")
+
+[node name="bush" type="Sprite2D" parent="map/bush/bush"]
+position = Vector2(1019, -547)
+texture = ExtResource("9_4c57u")

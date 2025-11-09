@@ -68,22 +68,32 @@ func _process(delta):
             
 
 func show_result(success: bool):
-    get_node("../player").set_state(PlayerMove.player_state.RESULT)
+    var player = get_node("../player")
+    player.set_state(PlayerMove.player_state.RESULT)
     var result_text = Label.new()
     result_text.set("theme_override_font_sizes/font_size", 50)
     var screen_size = get_viewport().get_visible_rect().size
     result_text.position = Vector2((screen_size.x / 2) - 300, (screen_size.y / 2)-50)
     
+    $fish.position = Vector2((screen_size.x / 2) - 130, (screen_size.y / 2)-30)
+    result_text.text = "ПРОВАЛ!"
+    
     if success:
-        get_node("../player").audioWin.play()
-        result_text.text = "УСПЕХ!"
-        result_text.add_theme_color_override("font_color", Color.GREEN)
+        var pool = get_node("../pool")
+        var difficulty = pool.difficulty_values[pool.difficulty]
+        player.audioWin.play()
+        if pool.buble_direction == pool.entered_direction and pool.buble_direction != 5:
+            difficulty *= 2
+        $fish.scale.x = 0.6 * difficulty
+        $fish.scale.y = 0.6 * difficulty
+        result_text.hide()
+        $fish.show()
     else:
-        get_node("../player").audioLose.play()
-        result_text.text = "ПРОВАЛ!"
+        result_text.show()
+        player.audioLose.play()
         result_text.add_theme_color_override("font_color", Color.RED)  
     add_child(result_text)
-    get_node("../player").audioCoilMore.stop()
+    player.audioCoilMore.stop()
     # Удалить через 2 секунды
     await get_tree().create_timer(2.0).timeout
     result_text.queue_free()
@@ -94,6 +104,7 @@ func show_result(success: bool):
 func _stop_fishing():
     stop_loop()
     fish_on = false
+    $fish.hide()
     hide()
 
 func _start_fishing(difficulty: String):
@@ -136,7 +147,7 @@ func _start_fishing(difficulty: String):
     target_zone.size = target_size
     target_zone.position = Vector2(bar_pos_x + 2, random_target_y)  # Случайная позиция
     
-    moving_indicator.size = Vector2(44, 30)
+    moving_indicator.size = Vector2(44, 10)
     moving_indicator.position = Vector2(bar_pos_x + 2, bar_height + bar_pos_y - moving_indicator.size.y)
     
     border.size = fishing_bar.size + Vector2(8, 8)  # +4 пикселя с каждой стороны
