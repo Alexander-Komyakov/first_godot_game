@@ -17,6 +17,7 @@ var tween_move: Tween
 var tween_fishing: Tween
 var anim_fish_start: bool
 
+
 enum player_state {
     IDLE = 0, FISHING = 1, RESULT = 2
 }
@@ -62,6 +63,8 @@ func _physics_process(delta):
 func set_state(state: int):
     _current_state = state
     if _current_state == player_state.IDLE:
+        if get_node("../pool").entered_direction == get_node("../pool").buble_direction and get_node("../pool").buble_direction != get_node("../pool").buble_state_values["none"]:
+            get_node("../pool")._hide_all_buble()
         if audioCoilMore != null and audioCoilMore.playing:
             audioCoilMore.stop()
         animated_sprite.frame = 0
@@ -130,5 +133,4 @@ func stop_move_animation():
     
 func _ready():
     pass
-    #animation_idle()
     

@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-#signal fishing_result(success: bool)
 signal add_score(score: int)
 
 
@@ -52,6 +51,8 @@ func _end_game(success: bool, score: int):
     stop_loop()
     fish_on = false
     show_result(success)
+    if get_node("../pool").buble_direction == get_node("../pool").entered_direction and get_node("../pool").buble_direction != 5:
+        score *= 2
     add_score.emit(score)  # Отправляем результат
     
 
@@ -149,7 +150,7 @@ func _start_fishing(difficulty: String):
     
     tween.tween_property(moving_indicator, "position:y", min_y, indicator_speed)
     tween.tween_property(moving_indicator, "position:y", max_y, indicator_speed)
-    tween.set_loops(10)
+    tween.set_loops(6)
     tween.finished.connect(func(): _end_game(false, 0))
 
     show()

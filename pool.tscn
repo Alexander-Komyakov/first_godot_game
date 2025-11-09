@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca27digfwqrcd"]
+[gd_scene load_steps=14 format=3 uid="uid://ca27digfwqrcd"]
 
 [ext_resource type="Script" uid="uid://bqu0cqkocgebg" path="res://pools.gd" id="1_q638n"]
 [ext_resource type="Texture2D" uid="uid://byd5cnx28mj4q" path="res://images/animation/voda.png" id="2_03hax"]
 [ext_resource type="Texture2D" uid="uid://cd2pypt28tv6l" path="res://images/animation/Water.png" id="3_bslhr"]
 [ext_resource type="Script" uid="uid://bd84bp2ntxe11" path="res://waterback.gd" id="5_76ob0"]
+[ext_resource type="Texture2D" uid="uid://c4xexlt5ps1jv" path="res://images/animation/bubleOne.png" id="5_ryjux"]
+[ext_resource type="AudioStream" uid="uid://bqnqlxr08dfp0" path="res://audio/buble2.mp3" id="7_ryjux"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w78qj"]
 animations = [{
@@ -19,6 +21,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76ob0"]
 size = Vector2(550, 498)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7g16q"]
+size = Vector2(292, 266)
+
+[sub_resource type="GDScript" id="GDScript_7g16q"]
+script/source = "extends CPUParticles2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:    
+    pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryjux"]
+size = Vector2(292, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08ey2"]
+size = Vector2(258, 266)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87cwm"]
+size = Vector2(258, 232)
+
 [node name="pool" type="StaticBody2D"]
 z_index = -1
 script = ExtResource("1_q638n")
@@ -30,12 +57,14 @@ animation = &"pool"
 autoplay = "pool"
 
 [node name="detector" type="Area2D" parent="."]
+visible = false
 
 [node name="s" type="CollisionShape2D" parent="detector"]
 position = Vector2(-17, 17)
 shape = SubResource("RectangleShape2D_76ob0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 polygon = PackedVector2Array(136, -90, 179, -72, 211, -41, 218, -3, 212, 32, 195, 64, 178, 88, 176, 124, 159, 163, 137, 195, 101, 220, 55, 234, 37, 231, 25, 236, -18, 236, -74, 213, -132, 173, -178, 129, -191, 79, -195, 56, -230, 31, -242, -27, -228, -72, -199, -106, -165, -131, -128, -149, -74, -161, -8, -160, 41, -147, 92, -127, 117, -108)
 
@@ -43,4 +72,112 @@ polygon = PackedVector2Array(136, -90, 179, -72, 211, -41, 218, -3, 212, 32, 195
 texture = ExtResource("3_bslhr")
 script = ExtResource("5_76ob0")
 
+[node name="leftDown" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftDown"]
+visible = false
+position = Vector2(-146, 133)
+shape = SubResource("RectangleShape2D_7g16q")
+
+[node name="bubleLeftDown" type="CPUParticles2D" parent="leftDown"]
+position = Vector2(-83, 88)
+texture = ExtResource("5_ryjux")
+lifetime = 2.1799999999999997
+speed_scale = 0.5
+explosiveness = 0.27
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+gravity = Vector2(0, 0)
+radial_accel_min = 12.12
+radial_accel_max = 12.12
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+script = SubResource("GDScript_7g16q")
+
+[node name="leftUp" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftUp"]
+visible = false
+position = Vector2(-146, -116)
+shape = SubResource("RectangleShape2D_ryjux")
+
+[node name="bubleLeftUp" type="CPUParticles2D" parent="leftUp"]
+position = Vector2(-112, -74)
+texture = ExtResource("5_ryjux")
+lifetime = 2.1799999999999997
+speed_scale = 1.79
+explosiveness = 0.27
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+gravity = Vector2(0, 0)
+radial_accel_min = 12.12
+radial_accel_max = 12.12
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+script = SubResource("GDScript_7g16q")
+
+[node name="rightDown" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightDown"]
+visible = false
+position = Vector2(129, 133)
+shape = SubResource("RectangleShape2D_08ey2")
+
+[node name="bubleRightDown" type="CPUParticles2D" parent="rightDown"]
+position = Vector2(90, 76)
+texture = ExtResource("5_ryjux")
+lifetime = 2.1799999999999997
+speed_scale = 0.5
+explosiveness = 0.27
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+gravity = Vector2(0, 0)
+radial_accel_min = 12.12
+radial_accel_max = 12.12
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+script = SubResource("GDScript_7g16q")
+
+[node name="rightUp" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightUp"]
+visible = false
+position = Vector2(129, -116)
+shape = SubResource("RectangleShape2D_87cwm")
+
+[node name="bubleRightUp" type="CPUParticles2D" parent="rightUp"]
+position = Vector2(93, -59)
+texture = ExtResource("5_ryjux")
+lifetime = 2.1799999999999997
+speed_scale = 0.5
+explosiveness = 0.27
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+gravity = Vector2(0, 0)
+radial_accel_min = 12.12
+radial_accel_max = 12.12
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+script = SubResource("GDScript_7g16q")
+
+[node name="bubleAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ryjux")
+volume_db = 9.143
+
 [connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_entered" from="leftDown" to="." method="_on_left_down_body_entered"]
+[connection signal="visibility_changed" from="leftDown" to="." method="_on_left_down_visibility_changed"]
+[connection signal="body_entered" from="leftUp" to="." method="_on_left_up_body_entered"]
+[connection signal="visibility_changed" from="leftUp" to="." method="_on_left_up_visibility_changed"]
+[connection signal="body_entered" from="rightDown" to="." method="_on_right_down_body_entered"]
+[connection signal="visibility_changed" from="rightDown" to="." method="_on_right_down_visibility_changed"]
+[connection signal="body_entered" from="rightUp" to="." method="_on_right_up_body_entered"]
+[connection signal="visibility_changed" from="rightUp" to="." method="_on_right_up_visibility_changed"]
