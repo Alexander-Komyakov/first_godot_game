@@ -93,8 +93,8 @@ func show_result(success: bool):
         player.audioWin.play()
         if pool.buble_direction == pool.entered_direction and pool.buble_direction != 5:
             difficulty *= 2
-        $fish.frame = difficulty
-        $fishLabel.text = "Поймал рыбу: " + fish_values[difficulty] + " +" + str(difficulty)
+        $fish.frame = difficulty-1
+        $fishLabel.text = "Поймал рыбу: " + fish_values[difficulty-1] + " +" + str(difficulty)
         $fish.show()
     else:
         player.audioLose.play()
