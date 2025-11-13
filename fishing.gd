@@ -10,6 +10,16 @@ var target_zone = ColorRect.new()
 var fishing_bar = ColorRect.new()
 var border = ColorRect.new()
  
+var fish_values = [
+    "червышь",
+    "кривяк",
+    "лупышь",
+    "кубич",
+    "задумок",
+    "пиляшь"
+]
+
+
 func stop_loop():
     if tween:
         tween.kill()
@@ -70,35 +80,35 @@ func _process(delta):
 func show_result(success: bool):
     var player = get_node("../player")
     player.set_state(PlayerMove.player_state.RESULT)
-    var result_text = Label.new()
-    result_text.set("theme_override_font_sizes/font_size", 50)
     var screen_size = get_viewport().get_visible_rect().size
-    result_text.position = Vector2((screen_size.x / 2) - 300, (screen_size.y / 2)-50)
     
-    $fish.position = Vector2((screen_size.x / 2) - 130, (screen_size.y / 2)-30)
-    result_text.text = "ПРОВАЛ!"
-    
+    $water.show()
+    $rod.show()
+    $fishLabel.show()
     if success:
+        $fish.show()
+
         var pool = get_node("../pool")
         var difficulty = pool.difficulty_values[pool.difficulty]
         player.audioWin.play()
         if pool.buble_direction == pool.entered_direction and pool.buble_direction != 5:
             difficulty *= 2
-        $fish.scale.x = 0.6 * difficulty
-        $fish.scale.y = 0.6 * difficulty
-        result_text.hide()
+        $fish.frame = difficulty
+        $fishLabel.text = "Поймал рыбу: " + fish_values[difficulty] + " +" + str(difficulty)
         $fish.show()
     else:
-        result_text.show()
         player.audioLose.play()
-        result_text.add_theme_color_override("font_color", Color.RED)  
-    add_child(result_text)
+        $fishLabel.text = "Cорвалась бандура!"
     player.audioCoilMore.stop()
     # Удалить через 2 секунды
     await get_tree().create_timer(2.0).timeout
-    result_text.queue_free()
     #fishing_result.emit(success)  # Отправляем результат
     get_node("../player").set_state(PlayerMove.player_state.IDLE)
+    $fish.hide()
+    $water.hide()
+    $rod.hide()
+    $fishLabel.hide()
+    
     _stop_fishing()
 
 func _stop_fishing():
@@ -118,7 +128,7 @@ func _start_fishing(difficulty: String):
     var bar_width = 48
     var bar_height = 300
     var bar_pos_x = center_x - bar_width / 2  # Центрируем по X
-    var bar_pos_y = center_y - bar_height / 2  # Центрируем по Y
+    var bar_pos_y = center_y - bar_height / 2 + 50  # Центрируем по Y
     
     # Настройки сложности
     var target_size = Vector2(44, 0)

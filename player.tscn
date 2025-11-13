@@ -49,7 +49,7 @@ volume_db = 1.101
 
 [node name="AudioBulk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_sweqy")
-volume_db = -4.771
+volume_db = -8.588
 
 [node name="AudioCoil" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2hs0m")

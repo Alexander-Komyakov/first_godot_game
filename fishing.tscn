@@ -1,13 +1,91 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4k4f4hc7t7e1"]
+[gd_scene load_steps=13 format=3 uid="uid://b4k4f4hc7t7e1"]
 
 [ext_resource type="Script" uid="uid://dn6lmhe278r4w" path="res://fishing.gd" id="1_xb554"]
 [ext_resource type="Texture2D" uid="uid://vjfwvx778k7f" path="res://images/animation/fishNew.png" id="2_vc7xe"]
+[ext_resource type="Texture2D" uid="uid://dlq1py1bs3w1s" path="res://images/fish/fish1.png" id="3_0xc70"]
+[ext_resource type="Texture2D" uid="uid://c7ke43ioqvt48" path="res://images/fish/fish2.png" id="4_lx132"]
+[ext_resource type="Texture2D" uid="uid://dskehyq5s28c3" path="res://images/fish/fish3.png" id="5_618or"]
+[ext_resource type="Texture2D" uid="uid://cxv5idtx7f6mg" path="res://images/fish/fish4.png" id="6_x4860"]
+[ext_resource type="Texture2D" uid="uid://dfybdk7u8sumi" path="res://images/fish/fish5.png" id="7_8tyap"]
+[ext_resource type="Texture2D" uid="uid://26cs08w338gn" path="res://images/fish/fish6.png" id="8_vemvo"]
+[ext_resource type="Texture2D" uid="uid://3qtcll58u30f" path="res://images/animation/fishingRod.png" id="9_lx132"]
+[ext_resource type="Texture2D" uid="uid://jweqqv21ljgk" path="res://images/animation/waterUI.png" id="10_618or"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2tey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0xc70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lx132")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_618or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x4860")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8tyap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vemvo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xc70"]
+font_size = 40
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 0.29411766)
+shadow_offset = Vector2(1, 4)
 
 [node name="fishing" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_xb554")
 
-[node name="fish" type="Sprite2D" parent="."]
+[node name="fishOld" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(669, 320)
+rotation = -1.5707964
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_vc7xe")
+
+[node name="fish" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(106, 279.5)
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_x2tey")
+frame = 5
+
+[node name="fishLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+anchors_preset = -1
+offset_left = 148.0
+offset_top = 51.0
+offset_right = 858.0
+offset_bottom = 120.0
+text = "Поймал рыбу: червь"
+label_settings = SubResource("LabelSettings_0xc70")
+
+[node name="rod" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(79, 202.81131)
+scale = Vector2(1.245283, 1.2452829)
+texture = ExtResource("9_lx132")
+
+[node name="water" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(107, 281.5)
+texture = ExtResource("10_618or")
+
+[node name="water" type="Sprite2D" parent="water"]
+position = Vector2(293, -192.5)
+rotation = -1.5707964
+scale = Vector2(0.9562651, 2.2640839)
+texture = ExtResource("10_618or")
