@@ -15,7 +15,13 @@ var fish_values = [
     "кривяк",
     "лупышь",
     "кубич",
+    "",
+    "",
+    "",
     "задумок",
+    "",
+    "",
+    "",
     "пиляшь"
 ]
 
@@ -62,7 +68,8 @@ func _end_game(success: bool, score: int):
     fish_on = false
     show_result(success)
     if get_node("../pool").buble_direction == get_node("../pool").entered_direction and get_node("../pool").buble_direction != 5:
-        score *= 2
+        score *= 4
+    
     add_score.emit(score)  # Отправляем результат
     
 
@@ -92,9 +99,15 @@ func show_result(success: bool):
         var difficulty = pool.difficulty_values[pool.difficulty]
         player.audioWin.play()
         if pool.buble_direction == pool.entered_direction and pool.buble_direction != 5:
-            difficulty *= 2
-        $fish.frame = difficulty-1
+            $fish.frame = (difficulty*2)+1
+            difficulty *= 4
+            if difficulty == 8:
+                $fish.frame = 4
+        else:
+            $fish.frame = difficulty-1
+
         $fishLabel.text = "Поймал рыбу: " + fish_values[difficulty-1] + " +" + str(difficulty)
+        get_node("../../main/table/fish"+str(difficulty)).show()
         $fish.show()
     else:
         player.audioLose.play()

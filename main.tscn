@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://glhl6xhpy37x"]
+[gd_scene load_steps=16 format=3 uid="uid://glhl6xhpy37x"]
 
 [ext_resource type="PackedScene" uid="uid://x7ixskn1mbjl" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ca27digfwqrcd" path="res://pool.tscn" id="2_h2yge"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://cxipg82pc8wfw" path="res://audio_stream_player.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://d3tbe2dp1e7uj" path="res://images/animation/kamish.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://iacrir7e6w62" path="res://images/animation/brow.png" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://1uwk6c15w5j5" path="res://images/animation/GreyBG.png" id="9_vivmo"]
+[ext_resource type="Texture2D" uid="uid://dlq1py1bs3w1s" path="res://images/fish/fish1.png" id="10_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://c7ke43ioqvt48" path="res://images/fish/fish2.png" id="11_yaehf"]
+[ext_resource type="Texture2D" uid="uid://dskehyq5s28c3" path="res://images/fish/fish3.png" id="12_074og"]
+[ext_resource type="Texture2D" uid="uid://cxv5idtx7f6mg" path="res://images/fish/fish4.png" id="13_cegan"]
+[ext_resource type="Texture2D" uid="uid://dfybdk7u8sumi" path="res://images/fish/fish5.png" id="14_82xsv"]
+[ext_resource type="Texture2D" uid="uid://26cs08w338gn" path="res://images/fish/fish6.png" id="15_getpj"]
 
 [node name="main" type="Node2D"]
 
@@ -22,6 +29,7 @@ position = Vector2(930, 340)
 [node name="Interface" parent="." instance=ExtResource("4_1bvp3")]
 
 [node name="background" parent="." instance=ExtResource("6_7mycd")]
+z_index = 4
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("7_272bh")]
 volume_db = -10.086
@@ -43,9 +51,44 @@ position = Vector2(121, 77)
 texture = ExtResource("9_4c57u")
 
 [node name="bush" type="Sprite2D" parent="map/bush"]
-position = Vector2(101, 575)
+position = Vector2(125, 611)
 texture = ExtResource("9_4c57u")
 
 [node name="bush" type="Sprite2D" parent="map/bush/bush"]
-position = Vector2(1019, -547)
+position = Vector2(1008, -618)
 texture = ExtResource("9_4c57u")
+
+[node name="table" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(198, 543)
+texture = ExtResource("9_vivmo")
+
+[node name="fish1" type="Sprite2D" parent="table"]
+visible = false
+position = Vector2(100, 29)
+texture = ExtResource("10_2cqfq")
+
+[node name="fish2" type="Sprite2D" parent="table"]
+visible = false
+position = Vector2(-16, -37)
+texture = ExtResource("11_yaehf")
+
+[node name="fish3" type="Sprite2D" parent="table"]
+visible = false
+position = Vector2(-115, 20)
+texture = ExtResource("12_074og")
+
+[node name="fish4" type="Sprite2D" parent="table"]
+visible = false
+position = Vector2(-105, -35)
+texture = ExtResource("13_cegan")
+
+[node name="fish8" type="Sprite2D" parent="table"]
+visible = false
+position = Vector2(78, -36)
+texture = ExtResource("14_82xsv")
+
+[node name="fish12" type="Sprite2D" parent="table"]
+visible = false
+position = Vector2(-24, 31)
+texture = ExtResource("15_getpj")
